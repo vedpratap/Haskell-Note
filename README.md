@@ -273,3 +273,111 @@ Prelude> (1,1,'a')
 ```
       
 - In the above example, we have used one Tuple with two number type variables, and a char type variable.      
+
+#### Haskell - Basic Operators
+
+- In this chapter, we will learn about different operators used in Haskell. Like other programming languages, Haskell intelligently handles some basic operations like addition, subtraction, multiplication, etc. In the upcoming chapters, we will learn more about different operators and their use.
+
+- In this chapter, we will use different operators in Haskell using our online platform (https://www.tutorialspoint.com/codingground.htm). Remember we are using only **integer** type numbers because we will learn more about **decimal** type numbers in the subsequent chapters.      
+
+#### Addition Operator
+
+- As the name suggests, the addition (+) operator is used for addition function. The following sample code shows how you can add two integer numbers in Haskell −
+
+```      
+    main = do 
+       let var1 = 2 
+       let var2 = 3 
+       putStrLn "The addition of the two numbers is:" 
+       print(var1 + var2) 
+```
+      
+- In the above file, we have created two separate variables **var1** and **var2**. At the end, we are printing the result using the **addition** operator. Use the **compile** and **execute** button to run your code.
+
+- This code will produce the following output on screen −
+      
+```
+    The addition of the two numbers is:
+    5
+```      
+      
+#### Subtraction Operator
+
+- As the name suggests, this operator is used for subtraction operation. The following sample code shows how you can subtract two integer numbers in Haskell −
+
+```      
+    main = do 
+       let var1 = 10 
+       let var2 = 6 
+       putStrLn "The Subtraction of the two numbers is:" 
+       print(var1 - var2)
+```
+
+- In this example, we have created two variables **var1** and **var2**. Thereafter, we use the subtraction (−) operator to subtract the two values.
+
+- This code will produce the following output on screen −
+
+```      
+The Subtraction of the two numbers is:
+4
+``` 
+      
+#### Multiplication Operator
+
+- This operator is used for multiplication operations. The following code shows how to multiply two numbers in Haskell using the Multiplication Operator −
+
+```
+    main = do 
+       let var1 = 2 
+       let var2 = 3 
+       putStrLn "The Multiplication of the Two Numbers is:" 
+       print(var1 * var2) 
+```
+      
+- This code will produce the following output, when you run it in our online platform −
+
+```      
+The Multiplication of the Two Numbers is:
+6 
+```
+
+#### Division Operator
+
+- Take a look at the following code. It shows how you can divide two numbers in Haskell −
+
+```      
+    main = do 
+       let var1 = 12 
+       let var2 = 3 
+       putStrLn "The Division of the Two Numbers is:" 
+       print(var1/var2)
+```
+      
+- It will produce the following output −
+
+```      
+The Division of the Two Numbers is: 
+4.0 
+```
+
+#### Sequence / Range Operator
+
+- Sequence or Range is a special operator in Haskell. It is denoted by "(..)". You can use this operator while declaring a list with a sequence of values.
+
+- If you want to print all the values from 1 to 10, then you can use something like "[1..10]". Similarly, if you want to generate all the alphabets from "a" to "z", then you can just type **"[a..z]"**.
+
+- The following code shows how you can use the Sequence operator to print all the values from 1 to 10 −
+Live Demo
+
+```      
+    main :: IO() 
+    main = do 
+       print [1..10]
+```
+      
+- It will generate the following output −
+
+```      
+    [1,2,3,4,5,6,7,8,9,10] 
+```      
+      
