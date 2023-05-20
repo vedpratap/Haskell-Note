@@ -381,3 +381,12 @@ Live Demo
     [1,2,3,4,5,6,7,8,9,10] 
 ```      
       
+## Haskell - Decision Making
+
+-  Decision Making is a feature that allows the programmers to apply a condition in the code flow. The programmer can execute a set of instructions depending on a predefined condition. The following flowchart shows the decision-making structure of Haskell −
+
+-  Haskell provides the following types of decision-making statements − 
+    - **if–else statement** : One if statement with an else statement. The instruction in the else block will execute only when the given Boolean condition fails to satisfy.  
+    - **Nested if-else statement** : Multiple if blocks followed by else blocks  
+
+      
