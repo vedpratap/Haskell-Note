@@ -812,3 +812,50 @@ main = do
     The factorial of 5 is:
     120      
 ```      
+
+##### Higher Order Function
+      
+- Till now, what we have seen is that Haskell functions take one **type** as input and produce another **type** as output, which is pretty much similar in other imperative languages. Higher Order Functions are a unique feature of Haskell where you can use a function as an input or output argument.
+
+- Although it is a virtual concept, but in real-world programs, every function that we define in Haskell use higher-order mechanism to provide output. If you get a chance to look into the library function of Haskell, then you will find that most of the library functions have been written in higher order manner.
+
+- Let us take an example where we will import an inbuilt higher order function map and use the same to implement another higher order function according to our choice.      
+```
+    import Data.Char  
+    import Prelude hiding (map) 
+
+    map :: (a -> b) -> [a] -> [b] 
+    map _ [] = [] 
+    map func (x : abc) = func x : map func abc  
+    main = print $ map toUpper "tutorialspoint.com"       
+```      
+
+- In the above example, we have used the **toUpper** function of the Type Class **Char** to convert our input into uppercase. Here, the method "map" is taking a function as an argument and returning the required output. Here is its output −  
+
+```
+    sh-4.3$ ghc -O2 --make *.hs -o main -threaded -rtsopts
+    sh-4.3$ main
+    "TUTORIALSPOINT.COM"       
+```    
+
+#### Lambda Expression
+      
+- We sometimes have to write a function that is going to be used only once, throughout the entire lifespan of an application. To deal with this kind of situations, Haskell developers use another anonymous block known as **lambda expression** or **lambda function**.
+
+- A function without having a definition is called a lambda function. A lambda function is denoted by "\" character. Let us take the following example where we will increase the input value by 1 without creating any function.
+
+```      
+main = do 
+   putStrLn "The successor of 4 is:"  
+   print ((\x -> x + 1) 4)
+```
+      
+- Here, we have created an anonymous function which does not have a name. It takes the integer 4 as an argument and prints the output value. We are basically operating one function without even declaring it properly. That's the beauty of lambda expressions.
+
+- Our lambda expression will produce the following output −
+
+```      
+sh-4.3$ main
+The successor of 4 is:
+5 
+```      
