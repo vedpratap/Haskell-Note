@@ -859,3 +859,330 @@ sh-4.3$ main
 The successor of 4 is:
 5 
 ```      
+
+## Haskell - More On Functions
+
+- Till now, we have discussed many types of Haskell functions and used different ways to call those functions. In this chapter, we will learn about some basic functions that can be easily used in Haskell without importing any special Type class. Most of these functions are a part of other higher order functions.
+ 
+#### Head Function
+      
+- **Head** function works on a List. It returns the first of the input argument which is basically a list. In the following example, we are passing a list with 10 values and we are generating the first element of that list using the **head** function. 
+ 
+```      
+    main = do 
+       let x = [1..10]   
+       putStrLn "Our list is:"  
+       print (x) 
+       putStrLn "The first element of the list is:" 
+       print (head x)
+```
+      
+- It will produce the following output −
+
+```      
+    Our list is: 
+    [1,2,3,4,5,6,7,8,9,10]
+    The first element of the list is:
+    1    
+```     
+
+#### Tail Function
+
+- Tail is the function that complements the head function. It takes a list as the input and yields the entire list without the head part. That means, the tail function returns the entire list without the first element. Take a look at the following example −
+
+```      
+main = do 
+   let x = [1..10]   
+   putStrLn "Our list is:"  
+   print (x) 
+   putStrLn "The tail of our list is:" 
+   print (tail x) 
+```
+      
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    The tail of our list is:
+    [2,3,4,5,6,7,8,9,10]  
+```      
+
+#### Last Function
+      
+- As the name suggests, it yields the last element of the list that is provided as the input. Check the following example.
+
+```
+    main = do 
+       let x = [1..10]   
+       putStrLn "Our list is:"  
+       print (x) 
+       putStrLn "The last element of our list is:" 
+       print (last x)
+```      
+
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    The last element of our list is:
+    10   
+```   
+
+#### Init Function
+
+- Init works exactly as the opposite of tail function. It takes a list as an argument and returns the entire list without the last entry.
+
+```      
+    main = do 
+       let x = [1..10]   
+       putStrLn "Our list is:"  
+       print (x) 
+       putStrLn "Our list without the last entry:"  
+       print (init x) 
+```      
+
+- Now, observe its output −
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    Our list without the last entry:
+    [1,2,3,4,5,6,7,8,9]   
+```      
+ 
+#### Null Function
+
+- Null is a Boolean check function which works on a String and returns True only when the given list is empty, otherwise it returns False. The following code checks whether the supplied list is empty or not.
+
+```
+    main = do 
+       let x = [1..10]   
+       putStrLn "Our list is:"  
+       print (x) 
+       putStrLn "Is our list empty?"  
+       print (null x)
+```    
+      
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    Is our list empty?
+    False  
+```      
+
+#### Reverse Function
+
+- It works on a String input and converts the entire input into reverse order and give one output as a result. Below is the code base for this function.
+
+```
+    main = do 
+       let x = [1..10]  
+       putStrLn "Our list is:" 
+       print (x) 
+       putStrLn "The list in Reverse Order is:" 
+       print (reverse x)
+```      
+      
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    The list in Reverse Order is:
+    [10,9,8,7,6,5,4,3,2,1] 
+```      
+      
+#### Length Function
+
+- This function is used to calculate the length of the **list** given as an argument. Take a look at the following example −
+
+```
+    main = do 
+       let x = [1..10]   
+       putStrLn "Our list is:" 
+       print (x) 
+       putStrLn "The length of this list is:" 
+       print (length x)
+```      
+
+- We have 10 elements in our list, hence our code will yield 10 as the output.
+
+```      
+    Our list is:
+    [1,2,3,4,5,6,7,8,9,10]
+    The length of this list is:
+    10
+```     
+
+#### Take Function
+
+- **Take** function is used to create a sub-string from another String. The following code shows how you can use the take function in Haskell −
+
+```
+    main = print(take 5 ([1 .. 10])) 
+```      
+
+- The code generates a sub-string containing 5 elements from the supplied list −
+
+```     
+    [1,2,3,4,5]     
+```   
+
+#### Drop Function
+
+- This function is also used to generate a sub-string. It functions as the opposite of the **take** function. Look at the following piece of code −
+
+```
+     main = print(drop 5 ([1 .. 10])) 
+```
+
+- The code drops the first 5 elements from the supplied list and prints the remaining 5 elements. It will produce the following output −
+
+```      
+    [6,7,8,9,10]
+```  
+
+#### Maximum Function
+
+- This function is used to find the element with the maximum value from the supplied list. Let us see how to use it in practice −
+
+```
+    main = do 
+       let x = [1,45,565,1245,02,2]   
+       putStrLn "The maximum value element of the list is:"  
+       print (maximum x)
+```      
+      
+- The above piece of code will generate following output −
+
+```      
+    The maximum value element of the list is:
+    1245      
+```    
+      
+#### Minimum Function
+
+- This function is used to find the element with the minimum value from the supplied list. It’s just the opposite of the maximum function.
+
+```
+    main = do 
+       let x = [1,45,565,1245,02,2]   
+       putStrLn "The minimum value element of the list is:"  
+       print (minimum x)
+```   
+      
+- The output of the above code is −
+
+```      
+    The minimum value element of the list is:
+    1 
+```   
+ 
+#### Sum Function
+
+- As the name suggests, this function returns the summation of all the elements present in the supplied list. The following code takes a list of 5 elements and returns their summation as the output.
+
+```
+    main = do 
+       let x = [1..5] 
+       putStrLn "Our list is:" 
+       print (x) 
+       putStrLn "The summation of the list elements is:" 
+       print (sum x)
+```   
+      
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5]
+    The summation of the list elements is:
+    15   
+```     
+      
+#### Product Function
+
+- You can use this function to multiply all the elements in a list and print its value.
+
+```
+    main = do 
+       let x = [1..5] 
+       putStrLn "Our list is:" 
+       print (x) 
+       putStrLn "The multiplication of the list elements is:" 
+       print (product x) 
+```    
+      
+- Our code will produce the following output −
+
+```      
+    Our list is:
+    [1,2,3,4,5]
+    The multiplication of the list elements is: 
+    120    
+```      
+
+#### Elem Function
+      
+- This function is used to check whether the supplied list contains a specific element or not. Accordingly, it either returns a true or a false.
+
+- The following code checks whether the supplied list of elements contains the value 786.
+
+```
+    main = do 
+       let x = [1,45,155,1785] 
+       putStrLn "Our list is:" 
+       print (x) 
+       putStrLn "Does it contain 786?" 
+       print (elem 786 (x))
+```   
+      
+- It will produce the following output −
+
+```      
+    Our list is:
+    [1,45,155,1785]
+    Does it contain 786?
+    False
+```  
+      
+- Use the same code to check if the supplied list contains the value 1785 or not. 
+
+#### Haskell - Function Composition
+
+- **Function Composition** is the process of using the output of one function as an input of another function. It will be better if we learn the mathematics behind **composition**. In mathematics, **composition** is denoted by **f{g(x)}** where **g()** is a function and its output in used as an input of another function, that is, **f()**.
+
+- Function composition can be implemented using any two functions, provided the output type of one function matches with the input type of the second function. We use the dot operator (.) to implement function composition in Haskell.
+
+- Take a look at the following example code. Here, we have used function composition to calculate whether an input number is even or odd.
+ 
+```
+    eveno :: Int -> Bool 
+    noto  :: Bool -> String 
+
+    eveno x = if x `rem` 2 == 0 
+       then True 
+    else False 
+    noto x = if x == True 
+       then "This is an even Number" 
+    else "This is an ODD number" 
+
+    main = do 
+       putStrLn "Example of Haskell Function composition" 
+       print ((noto.eveno)(16))      
+```      
+      
+- Here, in the **main** function, we are calling two functions, **noto** and **eveno**, simultaneously. The compiler will first call the function **"eveno()"** with **16** as an argument. Thereafter, the compiler will use the output of the eveno method as an input of **noto()** method.
+
+- Its output would be as follows −
+
+```      
+    Example of Haskell Function composition                
+    "This is an even Number"
+```      
+      
+- Since we are supplying the number 16 as the input (which is an even number), the **eveno()** function returns **true**, which becomes the input for the **noto()** function and returns the output: "This is an even Number".      
