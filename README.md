@@ -1555,3 +1555,38 @@ Different methods of List Module
 ```
     [2,6,10,14,18]  
 ```      
+
+## Haskell - Zippers
+      
+- **Zippers** in Haskell are basically pointers that point to some specific location of a data structure such as a **tree**.
+
+- Let us consider a **tree** having 5 elements **[45,7,55,120,56]** which can be represented as a perfect binary tree. If I want to update the last element of this list, then I need to traverse through all the elements to reach at the last element before updating it. Right?
+
+- But, what if we could construct our tree in such a manner that a tree of having **N** elements is a collection of **[(N-1),N]**. Then, we need not traverse through all the unwanted **(N-1)** elements. We can directly update the Nth element. This is exactly the concept of Zipper. It focuses or points to a specific location of a tree where we can update that value without traversing the entire tree.
+
+- In the following example, we have implemented the concept of Zipper in a List. In the same way, one can implement Zipper in a **tree** or a **file** data structure.
+
+```
+    data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)
+    type Zipper_List a = ([a],[a])    
+
+    go_Forward :: Zipper_List a -> Zipper_List a   
+    go_Forward (x:xs, bs) = (xs, x:bs)   
+
+    go_Back :: Zipper_List a -> Zipper_List a   
+    go_Back (xs, b:bs) = (b:xs, bs)    
+
+    main = do 
+       let list_Ex = [1,2,3,4] 
+       print(go_Forward (list_Ex,[]))       
+       print(go_Back([4],[3,2,1])) 
+```      
+      
+- When you compile and execute the above program, it will produce the following output −
+
+```      
+    ([2,3,4],[1]) 
+    ([3,4],[2,1])
+```   
+      
+- Here we are focusing on an element of the entire string while going forward or while coming backward.      
