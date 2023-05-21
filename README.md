@@ -1456,6 +1456,63 @@ Different methods of List Module
       
 - An Applicative Functor is a normal Functor with some extra features provided by the Applicative Type Class.
 
-- Using Functor, we usually map an existing function with another function defined inside it. But there is no any way to map a function which is defined inside a Functor with another Functor. That is why we have another facility called Applicative Functor. This facility of mapping is implemented by Applicative Type class defined under the Control module. This class gives us only two methods to work with: one is pure and the other one is <*>.
+- Using Functor, we usually map an existing function with another function defined inside it. But there is no any way to map a function which is defined inside a Functor with another Functor. That is why we have another facility called **Applicative Functor**. This facility of mapping is implemented by Applicative Type class defined under the **Control** module. This class gives us only two methods to work with: one is **pure** and the other one is **<*>**.
 
-Following is the class definition of the Applicative Functor.      
+- Following is the class definition of the Applicative Functor.  
+
+- According to the implementation, we can map another Functor using two methods: **"Pure"** and **"<*>"**. The "Pure" method should take a value of any type and it will always return an Applicative Functor of that value.
+
+- The following example shows how an Applicative Functor works −
+
+```
+    import Control.Applicative 
+
+    f1:: Int -> Int -> Int 
+    f1 x y = 2*x+y  
+    main = do  
+       print(show $ f1 <$> (Just 1) <*> (Just 2) ) 
+```      
+      
+- Here, we have implemented applicative functors in the function call of the function **f1**. Our program will yield the following output.
+
+```      
+    "Just 4" 
+``` 
+
+#### Monoids
+      
+- We all know Haskell defines everything in the form of functions. In functions, we have options to get our input as an output of the function. This is what a **Monoid** is.
+
+- A **Monoid** is a set of functions and operators where the output is independent of its input. Let’s take a function (*) and an integer (1). Now, whatever may be the input, its output will remain the same number only. That is, if you multiply a number by 1, you will get the same number.
+
+- Here is a Type Class definition of monoid.
+
+```      
+    class Monoid m where  
+       mempty :: m 
+       mappend :: m -> m -> m  
+       mconcat :: [m] -> m 
+       mconcat = foldr mappend mempty 
+```      
+      
+- Take a look at the following example to understand the use of Monoid in Haskell.
+
+```
+    multi:: Int->Int 
+    multi x = x * 1 
+    add :: Int->Int 
+    add x = x + 0 
+
+    main = do  
+       print(multi 9)  
+       print (add 7)
+```      
+      
+- Our code will produce the following output −
+
+```      
+    9
+    7
+```      
+      
+- Here, the function "multi" multiplies the input with "1". Similarly, the function "add" adds the input with "0". In the both the cases, the output will be same as the input. Hence, the functions **{(*),1}** and **{(+),0}** are the perfect examples of monoids.      
