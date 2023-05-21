@@ -1339,3 +1339,71 @@ Different methods of List Module
 ``` 
       
 - The **showEven** function returns **True**, as "4" is an even number. The **showBoolean** function returns "1" as the Boolean function that we passed into the function is "True".      
+
+## Haskell - Input & Output
+      
+- All the examples that we have discussed so far are static in nature. In this chapter, we will learn to communicate dynamically with the users. We will learn different input and output techniques used in Haskell.      
+
+#### Files and Streams
+      
+- We have so far hard-coded all the inputs in the program itself. We have been taking inputs from static variables. Now, let us learn how to read and write from an external file.
+
+- Let us create a file and name it "abc.txt". Next, enter the following lines in this text file: "Welcome to Tutorialspoint. Here, you will get the best resource to learn Haskell."
+
+- Next, we will write the following code which will display the contents of this file on the console. Here, we are using the function readFile() which reads a file until it finds an EOF character. 
+
+```      
+    main = do  
+       let file = "abc.txt" 
+       contents <- readFile file 
+       putStrLn contents   
+```               
+                   
+- The above piece of code will read the file "abc.txt" as a String until it encounters any End of File character. This piece of code will generate the following output.
+
+```                   
+    Welcome to Tutorialspoint
+    Here, you will get the best resource to learn Haskell.
+```    
+                   
+- Observe that whatever it is printing on the terminal is written in that file.     
+
+#### Command Line Argument
+
+- Haskell also provides the facility to operate a file through the command prompt. Let us get back to our terminal and type **"ghci"**. Then, type the following set of commands −
+
+```                   
+    let file = "abc.txt" 
+    writeFile file "I am just experimenting here." 
+    readFile file 
+``` 
+                   
+- Here, we have created a text file called "abc.txt". Next, we have inserted a statement in the file using the command **writeFile**. Finally, we have used the command **readFile** to print the contents of the file on the console. Our code will produce the following output −
+
+```                   
+    I am just experimenting here.     
+```              
+
+#### Exceptions
+                   
+- An **exception** can be considered as a bug in the code. It is a situation where the compiler does not get the expected output at runtime. Like any other good programming language, Haskell provides a way to implement exception handling.
+
+- If you are familiar with Java, then you might know the Try-Catch block where we usually throw an error and catch the same in the **catch** block. In Haskell, we also have the same function to catch runtime errors.
+
+- The function definition of **try** looks like "try :: Exception e => IO a -> IO (Either e a)". Take a look at the following example code. It shows how you can catch the "Divide by Zero" exception.
+
+```
+    import Control.Exception 
+
+    main = do 
+       result <- try (evaluate (5 `div` 0)) :: IO (Either SomeException Int) 
+       case result of 
+          Left ex   -> putStrLn $ "Caught exception: " ++ show ex 
+          Right val -> putStrLn $ "The answer was: " ++ show val 
+```      
+      
+- In the above example, we have used the inbuilt **try** function of the **Control.Exception** module, hence we are catching the exception beforehand. Above piece of code will yield below output in the screen.
+      
+```
+    Caught exception: divide by zero  
+```      
