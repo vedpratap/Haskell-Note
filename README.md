@@ -1,5 +1,4 @@
-# Haskell-Note
-Haskell Functional Programming
+# Haskell Functional Programming
 
 - Haskell is a widely used purely functional language. Functional programming is based on mathematical functions. Besides Haskell, some of the other popular languages that follow Functional Programming paradigm include: Lisp, Python, Erlang, Racket, F#, Clojure, etc. Haskell is more intelligent than other popular programming languages such as Java, C, C++, PHP, etc. In this tutorial, we will discuss the fundamental concepts and functionalities of Haskell using relevant examples for easy understanding.
 - **Audience :**  This tutorial has been prepared for beginners to let them understand the basic concepts of functional programming using Haskell as a programming language.
