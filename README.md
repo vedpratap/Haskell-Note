@@ -579,5 +579,236 @@ Live Demo
     sh-4.3$ main 
     "[1,2,3,4,5,6,7,8,9,10]" 
 ```  
-                        
+                              
+#### Read
+
+- **Read** interface does the same thing as Show, but it won’t print the result in String format. In the following code, we have used the **read** interface to read a string value and convert the same into an Int value.
+Live Demo
+
+```                        
+    main = print (readInt "12") 
+    readInt :: String -> Int 
+    readInt = read 
+```
       
+- Here, we are passing a String variable ("12") to the **readInt** method which in turn returns 12 (an Int value) after conversion. Here is its output −
+
+```      
+    sh-4.3$ main 
+    12
+```      
+
+#### Enum
+      
+- **Enum** is another type of Type class which enables the sequential or ordered functionality in Haskell. This Type class can be accessed by commands such as **Succ, Pred, Bool, Char**, etc.
+
+- The following code shows how to find the successor value of 12.
+
+```
+    main = print (succ 12) 
+```
+      
+- It will produce the following output −
+
+```      
+    sh-4.3$ main
+    13
+```      
+
+#### Bounded
+
+- All the types having upper and lower bounds come under this Type Class. For example, **Int** type data has maximum bound of "9223372036854775807" and minimum bound of "-9223372036854775808".
+
+- The following code shows how Haskell determines the maximum and minimum bound of Int type.
+
+```
+main = do 
+   print (maxBound :: Int) 
+   print (minBound :: Int) 
+```
+      
+- It will produce the following output −
+
+```      
+    sh-4.3$ main
+    9223372036854775807
+    -9223372036854775808
+```
+
+- Now, try to find the maximum and minimum bound of Char, Float, and Bool types.      
+
+### Num
+
+- This type class is used for numeric operations. Types such as Int, Integer, Float, and Double come under this Type class. Take a look at the following code −
+
+```
+    main = do 
+       print(2 :: Int)  
+       print(2 :: Float) 
+```
+      
+- It will produce the following output −
+```
+    sh-4.3$ main
+    2
+    2.0
+```  
+
+#### Integral
+
+- **Integral** can be considered as a sub-class of the Num Type Class. Num Type class holds all types of numbers, whereas Integral type class is used only for integral numbers. Int and Integer are the types under this Type class.
+      
+#### Floating
+
+- Like Integral, Floating is also a part of the Num Type class, but it only holds floating point numbers. Hence, **Float** and **Double** come under this type class.
+      
+### Custom Type Class
+
+- Like any other programming language, Haskell allows developers to define user-defined types. In the following example, we will create a user-defined type and use it.
+
+```
+    data Area = Circle Float Float Float  
+    surface :: Area -> Float   
+    surface (Circle _ _ r) = pi * r ^ 2   
+    main = print (surface $ Circle 10 20 10 ) 
+```
+      
+- Here, we have created a new type called **Area**. Next, we are using this type to calculate the area of a circle. In the above example, "surface" is a function that takes **Area** as an input and produces **Float** as the output.
+
+- Keep in mind that "data" is a keyword here and all user-defined types in Haskell always start with a capital letter.
+
+- It will produce the following output −
+
+```      
+    sh-4.3$ main
+    314.15927
+```    
+
+## Haskell - Functions
+
+- Functions play a major role in Haskell, as it is a functional programming language. Like other languages, Haskell does have its own functional definition and declaration.
+  - Function declaration consists of the function name and its argument list along with its output.
+  - Function definition is where you actually define a function.
+
+- Let us take small example of **add** function to understand this concept in detail.   
+
+```      
+    add :: Integer -> Integer -> Integer   --function declaration 
+    add x y =  x + y                       --function definition 
+
+    main = do 
+       putStrLn "The addition of the two numbers is:"  
+       print(add 2 5)    --calling a function       
+```     
+
+- Here, we have declared our function in the first line and in the second line, we have written our actual function that will take two arguments and produce one integer type output.
+
+- Like most other languages, Haskell starts compiling the code from the main method. Our code will generate the following output −  
+
+```
+    The addition of the two numbers is:
+    7      
+```  
+
+#### Pattern Matching
+
+- Pattern Matching is process of matching specific type of expressions. It is nothing but a technique to simplify your code. This technique can be implemented into any type of Type class. If-Else can be used as an alternate option of pattern matching.
+
+- Pattern Matching can be considered as a variant of dynamic polymorphism where at runtime, different methods can be executed depending on their argument list.
+
+- Take a look at the following code block. Here we have used the technique of Pattern Matching to calculate the factorial of a number. 
+
+```      
+    fact :: Int -> Int 
+    fact 0 = 1 
+    fact n = n * fact ( n - 1 ) 
+
+    main = do 
+       putStrLn "The factorial of 5 is:" 
+       print (fact 5)     
+``` 
+      
+- We all know how to calculate the factorial of a number. The compiler will start searching for a function called "fact" with an argument. If the argument is not equal to 0, then the number will keep on calling the same function with 1 less than that of the actual argument.
+
+- When the pattern of the argument exactly matches with 0, it will call our pattern which is "fact 0 = 1". Our code will produce the following output − 
+
+```      
+    The factorial of 5 is:
+    120    
+```  
+
+#### Guards
+
+- **Guards** is a concept that is very similar to pattern matching. In pattern matching, we usually match one or more expressions, but we use **guards** to test some property of an expression.
+
+- Although it is advisable to use pattern matching over **guards**, but from a developer’s perspective, **guards** is more readable and simple. For first-time users, **guards** can look very similar to If-Else statements, but they are functionally different.
+
+- In the following code, we have modified our **factorial** program by using the concept of **guards**.
+
+```
+    fact :: Integer -> Integer 
+    fact n | n == 0 = 1 
+           | n /= 0 = n * fact (n-1) 
+    main = do 
+       putStrLn "The factorial of 5 is:"  
+       print (fact 5) 
+```
+      
+- Here, we have declared two **guards**, separated by "|" and calling the **fact** function from **main**. Internally, the compiler will work in the same manner as in the case of pattern matching to yield the following output −
+
+```      
+    The factorial of 5 is:
+    120
+```  
+
+#### Where Clause
+
+- **Where** is a keyword or inbuilt function that can be used at runtime to generate a desired output. It can be very helpful when function calculation becomes complex.
+
+- Consider a scenario where your input is a complex expression with multiple parameters. In such cases, you can break the entire expression into small parts using the "where" clause.
+
+- In the following example, we are taking a complex mathematical expression. We will show how you can find the roots of a polynomial equation `[x^2 - 8x + 6]` using Haskell.
+
+```
+    roots :: (Float, Float, Float) -> (Float, Float)  
+    roots (a,b,c) = (x1, x2) where 
+       x1 = e + sqrt d / (2 * a) 
+       x2 = e - sqrt d / (2 * a) 
+       d = b * b - 4 * a * c  
+       e = - b / (2 * a)  
+    main = do 
+       putStrLn "The roots of our Polynomial equation are:" 
+       print (roots(1,-8,6))
+```
+      
+- Notice the complexity of our expression to calculate the roots of the given polynomial function. It is quite complex. Hence, we are breaking the expression using the **where** clause. The above piece of code will generate the following output −
+
+```      
+    The roots of our Polynomial equation are:
+    (7.1622777,0.8377223)
+```      
+
+#### Recursion Function
+
+- Recursion is a situation where a function calls itself repeatedly. Haskell does not provide any facility of looping any expression for more than once. Instead, Haskell wants you to break your entire functionality into a collection of different functions and use recursion technique to implement your functionality.
+
+- Let us consider our pattern matching example again, where we have calculated the factorial of a number. Finding the factorial of a number is a classic case of using Recursion. Here, you might, "How is pattern matching any different from recursion?” The difference between these two lie in the way they are used. Pattern matching works on setting up the terminal constrain, whereas recursion is a function call.
+
+- In the following example, we have used both pattern matching and recursion to calculate the factorial of 5.      
+
+```
+    fact :: Int -> Int 
+    fact 0 = 1 
+    fact n = n * fact ( n - 1 ) 
+
+    main = do 
+       putStrLn "The factorial of 5 is:" 
+       print (fact 5)       
+```    
+ 
+- It will produce the following output − 
+
+```
+    The factorial of 5 is:
+    120      
+```      
