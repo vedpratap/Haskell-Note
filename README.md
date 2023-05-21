@@ -1407,3 +1407,47 @@ Different methods of List Module
 ```
     Caught exception: divide by zero  
 ```      
+
+## Haskell - Functor
+
+- **Functor** in Haskell is a kind of functional representation of different Types which can be mapped over. It is a high level concept of implementing polymorphism. According to Haskell developers, all the Types such as List, Map, Tree, etc. are the instance of the Haskell Functor. 
+- A **Functor** is an inbuilt class with a function definition like −
+
+```
+    class Functor f where 
+       fmap :: (a -> b) -> f a -> f b       
+```      
+
+- By this definition, we can conclude that the **Functor** is a function which takes a function, say, **fmap()** and returns another function. In the above example, **fmap()** is a generalized representation of the function **map()**.
+
+- In the following example, we will see how Haskell Functor works.
+
+```
+    main = do  
+       print(map (subtract 1) [2,4,8,16])      
+       print(fmap (subtract 1) [2,4,8,16]) 
+```      
+
+- Here, we have used both **map()** and **fmap()** over a list for a subtraction operation. You can observe that both the statements will yield the same result of a list containing the elements [1,3,7,15].
+
+- Both the functions called another function called **subtract()** to yield the result.
+
+```      
+    [1,3,7,15]
+    [1,3,7,15]
+```   
+      
+- Then, what is the difference between **map** and **fmap**? The difference lies in their usage. **Functor** enables us to implement some more functionalists in different data types, like "just" and "Nothing".
+
+```
+    main = do 
+       print (fmap  (+7)(Just 10)) 
+       print (fmap  (+7) Nothing)
+```   
+      
+- The above piece of code will yield the following output on the terminal −
+
+```      
+    Just 17
+    Nothing 
+```      
