@@ -1186,3 +1186,157 @@ main = do
 ```      
       
 - Since we are supplying the number 16 as the input (which is an even number), the **eveno()** function returns **true**, which becomes the input for the **noto()** function and returns the output: "This is an even Number".      
+
+## Haskell - Modules
+      
+- If you have worked on Java, then you would know how all the classes are bound into a folder called **package**. Similarly, Haskell can be considered as a collection of **modules**.
+
+- Haskell is a functional language and everything is denoted as an expression, hence a Module can be called as a collection of similar or related types of functions.
+
+- You can **import** a function from one module into another module. All the "import" statements should come first before you start defining other functions. In this chapter, we will learn the different features of Haskell modules.
+
+#### List Module
+      
+- List provides some wonderful functions to work with list type data. Once you import the List module, you have a wide range of functions at your disposal.
+
+- In the following example, we have used some important functions available under the List module.
+
+```
+import Data.List  
+
+main = do  
+   putStrLn("Different methods of List Module") 
+   print(intersperse '.' "Tutorialspoint.com") 
+   print(intercalate " " ["Lets","Start","with","Haskell"]) 
+   print(splitAt 7 "HaskellTutorial") 
+   print (sort [8,5,3,2,1,6,4,2])
+```
+ 
+- Here, we have many functions without even defining them. That is because these functions are available in the List module. After importing the List module, the Haskell compiler made all these functions available in the global namespace. Hence, we could use these functions.
+
+- Our code will yield the following output −
+
+```      
+Different methods of List Module
+"T.u.t.o.r.i.a.l.s.p.o.i.n.t...c.o.m"
+"Lets Start with Haskell"
+("Haskell","Tutorial")
+[1,2,2,3,4,5,6,8]
+```
+
+#### Char Module
+      
+- The **Char** module has plenty of predefined functions to work with the Character type. Take a look at the following code block −
+
+```
+    import Data.Char 
+
+    main = do  
+       putStrLn("Different methods of Char Module") 
+       print(toUpper 'a') 
+       print(words "Let us study tonight") 
+       print(toLower 'A')
+```
+
+- Here, the functions **toUpper** and **toLower** are already defined inside the **Char** module. It will produce the following output −
+
+```      
+    Different methods of Char Module
+    'A'
+    ["Let","us","study","tonight"]
+    'a'
+```      
+      
+#### Map Module
+      
+- **Map** is an unsorted value-added pair type data type. It is a widely used module with many useful functions. The following example shows how you can use a predefined function available in the Map module.
+
+```
+    import Data.Map (Map) 
+    import qualified Data.Map as Map  --required for GHCI  
+
+    myMap :: Integer -> Map Integer [Integer] 
+    myMap n = Map.fromList (map makePair [1..n]) 
+       where makePair x = (x, [x])  
+
+    main = print(myMap 3)
+```
+      
+- It will produce the following output −
+
+```      
+    fromList [(1,[1]),(2,[2]),(3,[3])] 
+```      
+
+#### Set Module
+      
+- The Set module has some very useful predefined functions to manipulate mathematical data. A set is implemented as a binary tree, so all the elements in a set must be unique.
+
+- Take a look at the following example code
+
+```
+    import qualified Data.Set as Set   
+
+    text1 = "Hey buddy"   
+    text2 = "This tutorial is for Haskell"   
+
+    main = do  
+       let set1 = Set.fromList text1   
+           set2 = Set.fromList text2 
+       print(set1) 
+       print(set2) 
+```
+      
+- Here, we are modifying a String into a Set. It will produce the following output. Observe that the output set has no repetition of characters.
+
+```      
+    fromList " Hbdeuy"
+    fromList " HTaefhiklorstu"
+``` 
+      
+#### Custom Module
+      
+- Let’s see how we can create a custom module that can be called at other programs. To implement this custom module, we will create a separate file called **"custom.hs"** along with our **"main.hs"**.
+
+- Let us create the custom module and define a few functions in it.
+
+##### custom.hs
+```      
+    module Custom ( 
+       showEven, 
+       showBoolean 
+    ) where 
+
+    showEven:: Int-> Bool 
+    showEven x = do 
+
+    if x 'rem' 2 == 0 
+       then True 
+    else False 
+    showBoolean :: Bool->Int 
+    showBoolean c = do 
+
+    if c == True 
+       then 1 
+    else 0 
+```      
+
+- Our Custom module is ready. Now, let us import it into a program.
+
+##### main.hs
+```      
+    import Custom 
+
+    main = do 
+       print(showEven 4) 
+       print(showBoolean True) 
+```      
+
+- Our code will generate the following output −
+
+```      
+    True
+    1
+``` 
+      
+- The **showEven** function returns **True**, as "4" is an even number. The **showBoolean** function returns "1" as the Boolean function that we passed into the function is "True".      
