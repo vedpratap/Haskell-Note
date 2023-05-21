@@ -449,3 +449,135 @@ Live Demo
     sh-4.3$ main
     1984297512562793395882644631364297686099210302577374055141      
 ```      
+
+#### Float
+
+- Take a look at the following piece of code. It shows how Float type works in Haskell −
+
+```
+    fType :: Float -> Float -> Float 
+    fType x y = x*x + y*y 
+    main = print (fType 2.5 3.8)
+```
+      
+- The function takes two float values as the input and yields another float value as the output. When you compile and execute this code, it will produce the following output −
+
+```      
+    sh-4.3$ main
+    20.689999
+```
+
+#### Double
+
+- **Double** is a floating point number with double precision at the end. Take a look at the following example −
+
+```
+    fType :: Double -> Double -> Double 
+    fType x y = x*x + y*y 
+    main = print (fType 2.56 3.81)
+```
+      
+- When you execute the above piece of code, it will generate the following output −
+
+```      
+sh-4.3$ main 
+21.0697
+```
+
+#### Bool
+
+- **Bool** is a Boolean Type. It can be either True or False. Execute the following code to understand how the Bool type works in Haskell −
+Live Demo
+
+```      
+    main = do  
+       let x = True 
+
+       if x == False 
+          then putStrLn "X matches with Bool Type" 
+       else putStrLn "X is not a Bool Type" 
+```
+      
+- Here, we are defining a variable "x" as a Bool and comparing it with another Boolean value to check its originality. It will produce the following output −
+
+```      
+    sh-4.3$ main
+    X is not a Bool Type 
+```  
+
+#### Char
+
+- Char represent Characters. Anything within a single quote is considered as a Character. In the following code, we have modified our previous **fType()** function to accept Char value and return Char value as output.
+
+```      
+    fType :: Char-> Char 
+    fType x = 'K' 
+    main = do  
+       let x = 'v' 
+       print (fType x) 
+```
+      
+- The above piece of code will call **fType()** function with a **char** value of 'v' but it returns another char value, that is, 'K'. Here is its output −
+
+```      
+    sh-4.3$ main 
+    'K'
+```
+      
+- Note that we are not going to use these types explicitly because Haskell is intelligent enough to catch the type before it is declared. In the subsequent chapters of this tutorial, we will see how different types and Type classes make Haskell a strongly typed language. 
+
+#### EQ Type Class
+
+- **EQ** type class is an interface which provides the functionality to test the equality of an expression. Any Type class that wants to check the equality of an expression should be a part of this EQ Type Class.
+
+- All standard Type classes mentioned above is a part of this **EQ** class. Whenever we are checking any equality using any of the types mentioned above, we are actually making a call to **EQ** type class.
+
+- In the following example, we are using the **EQ** Type internally using the "==" or "/=" operation.
+
+```
+    main = do 
+       if 8 /= 8 
+          then putStrLn "The values are Equal" 
+       else putStrLn "The values are not Equal"
+```
+      
+- It will yield the following output −
+
+```      
+    sh-4.3$ main 
+    The values are not Equal 
+```      
+      
+#### Ord Type Class
+
+- **Ord** is another interface class which gives us the functionality of ordering. All the **types** that we have used so far are a part of this **Ord** interface. Like EQ interface, Ord interface can be called using ">", "<", "<=", ">=", "compare".
+
+- Please find below example where we used “compare ” functionality of this Type Class.
+
+```      
+    main = print (4 <= 2) 
+```
+
+- Here, the Haskell compiler will check if 4 is less than or equal to 2. Since it is not, the code will produce the following output −
+
+```                        
+    sh-4.3$ main 
+    False
+```  
+                        
+#### Show
+                        
+- **Show** has a functionality to print its argument as a String. Whatever may be its argument, it always prints the result as a String. In the following example, we will print the entire list using this interface. "show" can be used to call this interface.
+
+```
+    main = print (show [1..10]) 
+```
+                        
+- It will produce the following output on the console. Here, the double quotes indicate that it is a String type value.
+
+```                        
+    sh-4.3$ main 
+    "[1,2,3,4,5,6,7,8,9,10]" 
+```  
+                        
+      
