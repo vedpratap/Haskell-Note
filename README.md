@@ -389,4 +389,63 @@ Live Demo
     - **if–else statement** : One if statement with an else statement. The instruction in the else block will execute only when the given Boolean condition fails to satisfy.  
     - **Nested if-else statement** : Multiple if blocks followed by else blocks  
 
+## Haskell - Types and Type Class
+
+- Haskell is a functional language and it is strictly typed, which means the data type used in the entire application will be known to the compiler at compile time.
+
+### Inbuilt Type Class
+
+- In Haskell, every statement is considered as a mathematical expression and the category of this expression is called as a **Type**. You can say that "Type" is the data type of the expression used at compile time.
+
+- To learn more about the **Type**, we will use the "`:t`" command. In a generic way, **Type** can be considered as a value, whereas **Type Class** can be the considered as a set of similar kind of Types. In this chapter, we will learn about different Inbuilt Types. 
+
+#### Int
+
+-  **Int** is a type class representing the Integer types data. Every whole number within the range of 2147483647 to -2147483647 comes under the **Int** type class. In the following example, the function **fType()** will behave according to its type defined.  
+```
+    fType :: Int -> Int -> Int 
+    fType x y = x*x + y*y
+    main = print (fType 2 4)       
+```      
+
+- Here, we have set the type of the function **fType()** as **int**. The function takes two **int** values and returns one int value. If you compile and execute this piece of code, then it will produce the following output − 
       
+```
+    sh-4.3$ ghc -O2 --make *.hs -o main -threaded -rtsopts 
+    sh-4.3$ main
+    20
+```     
+
+####  Integer
+      
+- **Integer** can be considered as a superset of **Int**. This value is not bounded by any number, hence an Integer can be of any length without any limitation. To see the basic difference between **Int** and **Integer** types, let us modify the above code as follows − 
+
+```
+    fType :: Int -> Int -> Int 
+    fType x y = x*x + y*y 
+    main = print (fType 212124454 44545454454554545445454544545)      
+```      
+
+-  If you compile the above piece of code, the following error message will be thrown −
+
+```
+    main.hs:3:31: Warning:            
+       Literal 44545454454554545445454544545 is out of the Int range -
+       9223372036854775808..9223372036854775807 
+    Linking main ...      
+```      
+
+- This error occurred because our function fType() expecting one Int type value, and we are passing some real big Int type value. To avoid this error, Let us modify the type "Int" with "Integer" and observe the difference.
+
+```
+    fType :: Integer -> Integer -> Integer 
+    fType x y = x*x + y*y 
+    main = print (fType 212124454 4454545445455454545445445454544545)      
+```      
+
+- Now, it will produce the following output −
+
+```
+    sh-4.3$ main
+    1984297512562793395882644631364297686099210302577374055141      
+```      
