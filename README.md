@@ -1451,3 +1451,11 @@ Different methods of List Module
     Just 17
     Nothing 
 ```      
+
+#### Applicative Functor
+      
+- An Applicative Functor is a normal Functor with some extra features provided by the Applicative Type Class.
+
+- Using Functor, we usually map an existing function with another function defined inside it. But there is no any way to map a function which is defined inside a Functor with another Functor. That is why we have another facility called Applicative Functor. This facility of mapping is implemented by Applicative Type class defined under the Control module. This class gives us only two methods to work with: one is pure and the other one is <*>.
+
+Following is the class definition of the Applicative Functor.      
