@@ -1516,3 +1516,42 @@ Different methods of List Module
 ```      
       
 - Here, the function "multi" multiplies the input with "1". Similarly, the function "add" adds the input with "0". In the both the cases, the output will be same as the input. Hence, the functions **{(*),1}** and **{(+),0}** are the perfect examples of monoids.      
+
+## Haskell - Monads
+
+- **Monads** are nothing but a type of Applicative Functor with some extra features. It is a Type class which governs three basic rules known as **monadic rules**.
+
+- All the three rules are strictly applicable over a Monad declaration which is as follows −   
+
+```
+    class Monad m where  
+       return :: a -> m a 
+       (>>=) :: m a -> (a -> m b) -> m b 
+       (>>) :: m a -> m b -> m b 
+       x >> y = x >>= \_ -> y 
+       fail :: String -> m a  
+       fail msg = error msg       
+```      
+ 
+- The three basic laws that are applicable over a Monad declaration are −
+
+  - **Left Identity Law** − The **return** function does not change the value and it should not change anything in the Monad. It can be expressed as "return >=> mf = mf".
+
+  - **Right Identity Law** − The **return** function does not change the value and it should not change anything in the Monad. It can be expressed as "mf >=> return = mf".
+
+  - **Associativity** − According to this law, both Functors and Monad instance should work in the same manner. It can be mathematically expressed as "( f >==>g) >=> h =f >= >(g >=h)".
+
+- The first two laws iterate the same point, i.e., a **return** should have identity behavior on both sides of the **bind** operator.
+
+- We have already used lots of Monads in our previous examples without realizing that they are Monad. Consider the following example where we are using a List Monad to generate a specific list.
+
+```
+    main = do
+       print([1..10] >>= (\x -> if odd x then [x*2] else []))
+```      
+      
+- This code will produce the following output −
+      
+```
+    [2,6,10,14,18]  
+```      
